@@ -1,4 +1,5 @@
 import express, { Router } from 'express'
+import cors from 'cors'
 import serverless from 'serverless-http'
 
 const app = express()
@@ -89,6 +90,7 @@ router.get('/birds', (req, res) => res.json([
   }
 ]))
 
+app.use(cors())
 
 app.use('/api/', router)
 
