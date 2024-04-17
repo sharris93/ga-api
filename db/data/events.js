@@ -1,6 +1,5 @@
 export default [
   {
-    _id: 1,
     eventName: 'Abba Voyage',
     date: '2024-05-15',
     location: 'London, UK',
@@ -8,7 +7,6 @@ export default [
     categories: ['Live Music', 'Art']
   },
   {
-    _id: 2,
     eventName: 'BST Hyde Park',
     date: '2024-06-29',
     location: 'London, UK',
@@ -16,7 +14,6 @@ export default [
     categories: ['Live Music', 'Music Festival']
   },
   {
-    _id: 3,
     eventName: 'Frameless',
     date: '2024-10-10',
     location: 'London, UK',
@@ -24,7 +21,6 @@ export default [
     categories: ['Visual Experience', 'Art', 'Family']
   },
   {
-    _id: 4,
     eventName: 'Harry Potter and the Cursed Child',
     date: '2024-07-02',
     location: 'London, UK',
@@ -32,7 +28,6 @@ export default [
     categories: ['Theatre']
   },
   {
-    _id: 5,
     eventName: 'Mamma Mia!',
     date: '2024-04-20',
     location: 'London, UK',
@@ -40,7 +35,6 @@ export default [
     categories: ['Musical Theatre', 'Theatre']
   },
   {
-    _id: 6,
     eventName: 'MLB World Tour: London Series',
     date: '2024-06-01',
     location: 'London, UK',
@@ -48,7 +42,6 @@ export default [
     categories: ['Live Sport', 'Baseball']
   },
   {
-    _id: 7,
     eventName: 'Wireless Festival',
     date: '2024-07-12',
     location: 'London, UK',
@@ -56,7 +49,6 @@ export default [
     categories: ['Live Music', 'Music Festival']
   },
   {
-    _id: 8,
     eventName: 'Bruce Springsteen',
     date: '2024-07-25',
     location: 'London, UK',
@@ -64,7 +56,6 @@ export default [
     categories: ['Live Music']
   },
   {
-    _id: 9,
     eventName: 'Rugby Union - South Africa v Wales',
     date: '2024-06-22',
     location: 'London, UK',
@@ -72,7 +63,6 @@ export default [
     categories: ['Live Sport', 'Rugby']
   },
   {
-    _id: 10,
     eventName: 'Stranger Things',
     date: '2024-05-10',
     location: 'London, UK',

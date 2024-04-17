@@ -1,28 +1,31 @@
-import express, { Router } from 'express'
+import 'dotenv/config'
+
+import { connectToDb } from '../../db/helpers.js'
 import cors from 'cors'
+import errorHandler from '../../lib/errorHandler.js'
+import express from 'express'
+import logger from '../../lib/logger.js'
+import router from '../../config/router.js'
 import serverless from 'serverless-http'
-import birdData from '../data/birds'
-import eventData from '../data/events'
 
 const app = express()
 
-const router = Router()
-
-// Routes
-router.get('/birds', (req, res) => res.json(birdData))
-router.get('/events', (req, res) => res.json(eventData))
-router.get('/events/:id', (req, res) => {
-  const event = eventData.find(event => event._id === parseInt(req.params.id))
-  if (event) {
-    return res.json(event)
-  } else {
-    return res.status(404).json({ message: 'Event Not Found' })
-  }
-})
-
-// Middleware
+app.use(express.json())
 app.use(cors())
+app.use('/', logger)
+app.use('/api', router)
+app.use(errorHandler)
 
-app.use('/api/', router)
+async function startSever() {
+  try {
+    await connectToDb()
+    console.log('Database connected')
+  } catch (err) {
+    console.log('Oh no something went wrong')
+    console.log(err)
+  }
+}
+
+startSever()
 
 export const handler = serverless(app)
