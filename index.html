@@ -1,11 +1,617 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="utf-8"/>
+    <title>Events API 🎶</title>
+    <script
+            defer
+            src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
+    />
+    <style>
+      .panel-block .container {
+        width: 100%;
+      }
+      .tags,
+      .tag,
+      .columns {
+        margin-bottom: 0 !important;
+      }
+      .panel-block .columns {
+        margin-bottom: -0.75rem !important;
+      }
+      .content blockquote {
+        background-color: hsl(0, 0%, 98%);
+      }
+      div.message:first-of-type {
+        margin-top: 0.75rem;
+      }
+
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var blocks = document.querySelectorAll("pre, code")
+        blocks.forEach(function (block) {
+          block.textContent = block.textContent.replace(
+            "{BASE_URI}",
+            window.origin
+          )
+        })
+
+        var messages = document.querySelectorAll(".messages")
+        messages.forEach(function (message) {
+          message.classList.add("is-hidden")
+        })
+
+        var blocks = document.querySelectorAll(
+          ".panel-block .container .columns"
+        )
+        blocks.forEach(function (block) {
+          block.addEventListener("click", function () {
+            var messages = this.parentNode.querySelector(".messages")
+            var icon = this.querySelector(".icon")
+
+            messages.classList.toggle("is-hidden")
+            icon.style.transform =
+              icon.style.transform === "rotate(180deg)"
+                ? "rotate(0)"
+                : "rotate(180deg)"
+          })
+        })
+      })
+
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
-  <h1>Hello World!</h1>
+<main class="section">
+    <div class="container">
+        <h1 class="title is-1">Events API</h1>
+
+        <p>A RESTful CRUD API for educational purposes</p>
+
+        <hr/>
+
+        <h2 class="title is-3">Endpoints</h2>
+        <h3 class="subtitle is-6"><em>* Requires authorization</em></h3>
+
+        <div class="content">
+            <blockquote>
+                <p>
+                    To authorize access to specific endpoints, set the
+                    <code>Authorization</code> header of your request to be
+                    <code>Bearer</code> followed by the token you received at login
+                </p>
+                <pre>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YmY1ODFkYTNkMWM2MjQyM2IxMmZjYjYiLCJpYXQiOjE1NDI4MTYyNzYsImV4cCI6MTU0MjgzNzg3Nn0.hAOyxDk9puDhMJ6nOowdfa8vpfYIp1wX8kzEOJoZ-3Y</pre
+                >
+            </blockquote>
+        </div>
+
+        <div class="panel">
+            <p class="panel-heading">/register</p>
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-info">POST</span>
+                                <span class="tag"><code>/register</code></span>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code>POST {BASE_URI}/register</code>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Parameters</div>
+                            <div class="message-body">
+                                <table class="table is-fullwidth">
+                                    <thead>
+                                    <tr>
+                                        <th>Property</th>
+                                        <th>Data type</th>
+                                        <th>Additional info</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><code>username</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>email</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>password</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>passwordConfirmation</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example payload</div>
+                            <div class="message-body">
+                    <pre>
+{
+  "username": "moirarose",
+  "email": "moira.rose@sunrisebay.io",
+  "password": "pass",
+  "passwordConfirmation": "pass"
+}</pre
+                    >
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>
+200 OK
+{
+  "message": "Welcome moirarose"
+}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <p class="panel-heading">/login</p>
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-info">POST</span>
+                                <span class="tag"><code>/login</code></span>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code>POST {BASE_URI}/login</code>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Parameters</div>
+                            <div class="message-body">
+                                <table class="table is-fullwidth">
+                                    <thead>
+                                    <tr>
+                                        <th>Property</th>
+                                        <th>Data type</th>
+                                        <th>Additional info</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><code>email</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>password</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example payload</div>
+                            <div class="message-body">
+                                <pre>
+{
+  "email": "moira.rose@sunrisebay.io",
+  "password": "pass"
+}
+                                </pre>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>
+200 OK
+{
+  "message": "Welcome back moirarose!",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YmY1ODFkYTNkMWM2MjQyM2IxMmZjYjYiLCJpYXQiOjE1NDI4MTYyNzYsImV4cCI6MTU0MjgzNzg3Nn0.hAOyxDk9puDhMJ6nOowdfa8vpfYIp1wX8kzEOJoZ-3Y"
+}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <p class="panel-heading">/events</p>
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-primary">GET</span>
+                                <span class="tag"><code>/events</code></span>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <span class="tag is-pulled-right">INDEX ROUTE</span>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code>GET {BASE_URI}/events</code>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>
+200 OK
+[
+    {
+        "_id": 1,
+        "eventName": "Abba Voyage",
+        "date": "2024-05-15",
+        "location": "London, UK",
+        "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2021/09/ABBA22-Q1-26-Ticketmaster-Buttons-1080x1080-1.jpg",
+        "categories": ["Live Music", "Art"]
+    },
+    {
+        "_id": 2,
+        "eventName": "BST Hyde Park",
+        "date": "2024-06-29",
+        "location": "London, UK",
+        "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2024/01/Untitled-2024-01-18T124432.415.png",
+        "categories": ["Live Music", "Music Festival"],
+    }
+]
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-info">POST</span>
+                                <span class="tag"><code>/events</code></span>
+                                <em>*</em>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <span class="tag is-pulled-right">CREATE ROUTE</span>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code>POST {BASE_URI}/events</code>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Parameters</div>
+                            <div class="message-body">
+                                <table class="table is-fullwidth">
+                                    <thead>
+                                    <tr>
+                                        <th>Property</th>
+                                        <th>Data type</th>
+                                        <th>Additional info</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><code>name</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>origin</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>description</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>image</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example payload</div>
+                            <div class="message-body">
+                                <pre>
+{
+    "eventName": "Abba Voyage",
+    "date": "2024-05-15",
+    "location": "London, UK",
+    "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2021/09/ABBA22-Q1-26-Ticketmaster-Buttons-1080x1080-1.jpg",
+    "categories": ["Live Music", "Art"]
+}
+                                </pre>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>
+201 Created
+{
+    "_id": 1,
+    "eventName": "Abba Voyage",
+    "date": "2024-05-15",
+    "location": "London, UK",
+    "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2021/09/ABBA22-Q1-26-Ticketmaster-Buttons-1080x1080-1.jpg",
+    "categories": ["Live Music", "Art"]
+}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <p class="panel-heading">/events/:id</p>
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-primary">GET</span>
+                                <span class="tag"><code>/events/:id</code></span>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <span class="tag is-pulled-right">SHOW ROUTE</span>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code
+                                >GET
+                                    {BASE_URI}/events/6267da4d14652f904f3ec110</code
+                                >
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>
+200 OK
+{
+    "_id": 1,
+    "eventName": "Abba Voyage",
+    "date": "2024-05-15",
+    "location": "London, UK",
+    "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2021/09/ABBA22-Q1-26-Ticketmaster-Buttons-1080x1080-1.jpg",
+    "categories": ["Live Music", "Art"]
+}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-warning">PUT</span>
+                                <span class="tag"><code>/events/:id</code></span>
+                                <em>*</em>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <span class="tag is-pulled-right">UPDATE ROUTE</span>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code
+                                >PUT
+                                    {BASE_URI}/events/6267da4d14652f904f3ec110</code
+                                >
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Parameters</div>
+                            <div class="message-body">
+                                <table class="table is-fullwidth">
+                                    <thead>
+                                    <tr>
+                                        <th>Property</th>
+                                        <th>Data type</th>
+                                        <th>Additional info</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><code>name</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>origin</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>description</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>image</code></td>
+                                        <td>String</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example payload</div>
+                            <div class="message-body">
+                                <pre>
+                                    {
+                                        "eventName": "Abba Voyage",
+                                        "date": "2024-05-15",
+                                        "location": "London, UK",
+                                        "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2021/09/ABBA22-Q1-26-Ticketmaster-Buttons-1080x1080-1.jpg",
+                                        "categories": ["Live Music", "Art"]
+                                    }
+                                </pre>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>
+200 OK
+{
+    "_id": 1,
+    "eventName": "Abba Voyage",
+    "date": "2024-05-15",
+    "location": "London, UK",
+    "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2021/09/ABBA22-Q1-26-Ticketmaster-Buttons-1080x1080-1.jpg",
+    "categories": ["Live Music", "Art"]
+}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-danger">DELETE</span>
+                                <span class="tag"><code>/events/:id</code></span>
+                                <em>*</em>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <span class="tag is-pulled-right">DELETE ROUTE</span>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code
+                                >DELETE
+                                    {BASE_URI}/events/6267da4d14652f904f3ec110</code
+                                >
+                            </div>
+                        </div>
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>204 No Content</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>
