@@ -54,7 +54,7 @@ export async function eventEdit(req, res, next) {
     if (!eventToUpdate) {
       throw new NotFound
     }
-    if (!eventToUpdate.addedBy.equals(currentUserId)) {
+    if (!eventToUpdate.owner.equals(currentUserId)) {
       throw new Unauthorized
     }
     Object.assign(eventToUpdate, req.body)
