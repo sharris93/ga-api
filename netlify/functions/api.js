@@ -12,7 +12,7 @@ const router = Router()
 router.get('/birds', (req, res) => res.json(birdData))
 router.get('/events', (req, res) => res.json(eventData))
 router.get('/events/:id', (req, res) => {
-  const event = eventData.find(event => event.id === parseInt(req.params.id))
+  const event = eventData.find(event => event._id === parseInt(req.params.id))
   if (event) {
     return res.json(event)
   } else {
