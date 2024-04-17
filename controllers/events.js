@@ -15,13 +15,13 @@ export async function eventCreate(req, res, next) {
   const { currentUserId } = req
   
   try {
-    const existingEvent = await Event.findOne({ name: req.body.name })
+    const existingEvent = await Event.findOne({ name: req.body.eventName })
 
-    if(existingEvent) throw new AlreadyExists
+    if (existingEvent) throw new AlreadyExists
 
     const createdEvent = await Event.create({
       ...req.body,
-      owner: currentUserId,
+      owner: currentUserId
     })
     
     return res.status(201).json(createdEvent)

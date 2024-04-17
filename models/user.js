@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import mongooseUniqueValidator from 'mongoose-unique-validator'
 
 const userSchema = new mongoose.Schema({
