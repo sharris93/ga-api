@@ -113,7 +113,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YmY1ODFkY
                         <div class="message is-small">
                             <div class="message-header">Example request</div>
                             <div class="message-body">
-                                <code>POST {BASE_URI}/register</code>
+                                <code>POST {BASE_URI}/api/register</code>
                             </div>
                         </div>
 
@@ -206,7 +206,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YmY1ODFkY
                         <div class="message is-small">
                             <div class="message-header">Example request</div>
                             <div class="message-body">
-                                <code>POST {BASE_URI}/login</code>
+                                <code>POST {BASE_URI}/api/login</code>
                             </div>
                         </div>
 
@@ -289,7 +289,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YmY1ODFkY
                         <div class="message is-small">
                             <div class="message-header">Example request</div>
                             <div class="message-body">
-                                <code>GET {BASE_URI}/events</code>
+                                <code>GET {BASE_URI}/api/events</code>
                             </div>
                         </div>
 
@@ -345,7 +345,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YmY1ODFkY
                         <div class="message is-small">
                             <div class="message-header">Example request</div>
                             <div class="message-body">
-                                <code>POST {BASE_URI}/events</code>
+                                <code>POST {BASE_URI}/api/events</code>
                             </div>
                         </div>
 
@@ -447,7 +447,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YmY1ODFkY
                             <div class="message-body">
                                 <code
                                 >GET
-                                    {BASE_URI}/events/6267da4d14652f904f3ec110</code
+                                    {BASE_URI}/api/events/1</code
                                 >
                             </div>
                         </div>
@@ -496,7 +496,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YmY1ODFkY
                             <div class="message-body">
                                 <code
                                 >PUT
-                                    {BASE_URI}/events/6267da4d14652f904f3ec110</code
+                                    {BASE_URI}/api/events/1</code
                                 >
                             </div>
                         </div>
@@ -542,13 +542,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YmY1ODFkY
                             <div class="message-header">Example payload</div>
                             <div class="message-body">
                                 <pre>
-                                    {
-                                        "eventName": "Abba Voyage",
-                                        "date": "2024-05-15",
-                                        "location": "London, UK",
-                                        "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2021/09/ABBA22-Q1-26-Ticketmaster-Buttons-1080x1080-1.jpg",
-                                        "categories": ["Live Music", "Art"]
-                                    }
+{
+    "eventName": "Abba Voyage",
+    "date": "2024-05-15",
+    "location": "London, UK",
+    "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2021/09/ABBA22-Q1-26-Ticketmaster-Buttons-1080x1080-1.jpg",
+    "categories": ["Live Music", "Art"]
+}
                                 </pre>
                             </div>
                         </div>
@@ -597,7 +597,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YmY1ODFkY
                             <div class="message-body">
                                 <code
                                 >DELETE
-                                    {BASE_URI}/events/6267da4d14652f904f3ec110</code
+                                    {BASE_URI}/api/events/1</code
                                 >
                             </div>
                         </div>
