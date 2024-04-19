@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8"/>
+    <title>Movie API 🎶</title>
+    <script
+            defer
+            src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
+    />
+    <style>
+      .panel-block .container {
+        width: 100%;
+      }
+      .tags,
+      .tag,
+      .columns {
+        margin-bottom: 0 !important;
+      }
+      .panel-block .columns {
+        margin-bottom: -0.75rem !important;
+      }
+      .content blockquote {
+        background-color: hsl(0, 0%, 98%);
+      }
+      div.message:first-of-type {
+        margin-top: 0.75rem;
+      }
+
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var blocks = document.querySelectorAll("pre, code")
+        blocks.forEach(function (block) {
+          block.textContent = block.textContent.replace(
+            "{BASE_URI}",
+            window.origin
+          )
+        })
+
+        var messages = document.querySelectorAll(".messages")
+        messages.forEach(function (message) {
+          message.classList.add("is-hidden")
+        })
+
+        var blocks = document.querySelectorAll(
+          ".panel-block .container .columns"
+        )
+        blocks.forEach(function (block) {
+          block.addEventListener("click", function () {
+            var messages = this.parentNode.querySelector(".messages")
+            var icon = this.querySelector(".icon")
+
+            messages.classList.toggle("is-hidden")
+            icon.style.transform =
+              icon.style.transform === "rotate(180deg)"
+                ? "rotate(0)"
+                : "rotate(180deg)"
+          })
+        })
+      })
+
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body>
+<main class="section">
+    <div class="container">
+        <h1 class="title is-1">🎬 Movie API 🎬</h1>
+
+        <p>A RESTful CRUD API for educational purposes</p>
+
+        <hr/>
+
+        <div class="panel">
+            <p class="panel-heading">/movies</p>
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-primary">GET</span>
+                                <span class="tag"><code>/movies</code></span>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <span class="tag is-pulled-right">INDEX ROUTE</span>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code>GET {BASE_URI}/api/movies</code>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>
+200 OK
+[
+    {
+        "_id": 1,
+        "eventName": "Abba Voyage",
+        "date": "2024-05-15",
+        "location": "London, UK",
+        "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2021/09/ABBA22-Q1-26-Ticketmaster-Buttons-1080x1080-1.jpg",
+        "categories": ["Live Music", "Art"]
+    },
+    {
+        "_id": 2,
+        "eventName": "BST Hyde Park",
+        "date": "2024-06-29",
+        "location": "London, UK",
+        "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2024/01/Untitled-2024-01-18T124432.415.png",
+        "categories": ["Live Music", "Music Festival"],
+    }
+]
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <div class="panel">
+            <p class="panel-heading">/movies/:id</p>
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-primary">GET</span>
+                                <span class="tag"><code>/movies/:id</code></span>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <span class="tag is-pulled-right">SHOW ROUTE</span>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code
+                                >GET
+                                    {BASE_URI}/api/movies/1</code
+                                >
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>
+200 OK
+{
+    "_id": 1,
+    "eventName": "Abba Voyage",
+    "date": "2024-05-15",
+    "location": "London, UK",
+    "image": "https://guides.ticketmaster.co.uk/wp-content/uploads/2021/09/ABBA22-Q1-26-Ticketmaster-Buttons-1080x1080-1.jpg",
+    "categories": ["Live Music", "Art"]
+}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</main>
+</body>
+</html>
