@@ -6,7 +6,6 @@ import errorHandler from './lib/errorHandler.js'
 import express from 'express'
 import logger from './lib/logger.js'
 import router from './config/router.js'
-import serverless from 'serverless-http'
 
 const app = express()
 
