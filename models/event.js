@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import mongooseUniqueValidator from 'mongoose-unique-validator'
 
 const eventSchema = new mongoose.Schema({
   eventName: { type: String, required: true },
@@ -9,7 +8,5 @@ const eventSchema = new mongoose.Schema({
   categories: [String],
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
 })
-
-eventSchema.plugin(mongooseUniqueValidator)
 
 export default mongoose.model('Event', eventSchema)
