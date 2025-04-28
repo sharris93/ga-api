@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8"/>
+    <title>Bird API 🎶</title>
+    <script
+            defer
+            src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
+    />
+    <style>
+      .panel-block .container {
+        width: 100%;
+      }
+      .tags,
+      .tag,
+      .columns {
+        margin-bottom: 0 !important;
+      }
+      .panel-block .columns {
+        margin-bottom: -0.75rem !important;
+      }
+      .content blockquote {
+        background-color: hsl(0, 0%, 98%);
+      }
+      div.message:first-of-type {
+        margin-top: 0.75rem;
+      }
+
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var blocks = document.querySelectorAll("pre, code")
+        blocks.forEach(function (block) {
+          block.textContent = block.textContent.replace(
+            "{BASE_URI}",
+            window.origin
+          )
+        })
+
+        var messages = document.querySelectorAll(".messages")
+        messages.forEach(function (message) {
+          message.classList.add("is-hidden")
+        })
+
+        var blocks = document.querySelectorAll(
+          ".panel-block .container .columns"
+        )
+        blocks.forEach(function (block) {
+          block.addEventListener("click", function () {
+            var messages = this.parentNode.querySelector(".messages")
+            var icon = this.querySelector(".icon")
+
+            messages.classList.toggle("is-hidden")
+            icon.style.transform =
+              icon.style.transform === "rotate(180deg)"
+                ? "rotate(0)"
+                : "rotate(180deg)"
+          })
+        })
+      })
+
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body>
+<main class="section">
+    <div class="container">
+        <h1 class="title is-1">🦅 Bird API 🦅</h1>
+
+        <p>A RESTful API for educational purposes</p>
+
+        <hr/>
+
+        <div class="panel">
+            <p class="panel-heading">/birds</p>
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-primary">GET</span>
+                                <span class="tag"><code>/birds</code></span>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <span class="tag is-pulled-right">INDEX ROUTE</span>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code>GET {BASE_URI}/api/birds</code>
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>
+200 OK
+[
+    {
+        "species": "Bald Eagle",
+        "subspecies": "Northern",
+        "habitat": "Forests",
+        "color": "Brown and White",
+        "size": "Large",
+        "diet": "Carnivore"
+    },
+    {
+        "species": "American Robin",
+        "subspecies": "Eastern",
+        "habitat": "Woodlands",
+        "color": "Red and Gray",
+        "size": "Medium",
+        "diet": "Omnivore"
+    },
+    {
+        "species": "Mallard",
+        "subspecies": "Common",
+        "habitat": "Wetlands",
+        "color": "Green and Brown",
+        "size": "Medium",
+        "diet": "Omnivore"
+    },
+    {
+        "species": "Peregrine Falcon",
+        "subspecies": "Anatum",
+        "habitat": "Cliffs",
+        "color": "Gray and White",
+        "size": "Medium",
+        "diet": "Carnivore"
+    },
+    {
+        "species": "Great Horned Owl",
+        "subspecies": "Common",
+        "habitat": "Forests",
+        "color": "Brown and White",
+        "size": "Large",
+        "diet": "Carnivore"
+    },
+    {
+        "species": "Blue Jay",
+        "subspecies": "Northern",
+        "habitat": "Forests",
+        "color": "Blue and White",
+        "size": "Medium",
+        "diet": "Omnivore"
+    },
+    {
+        "species": "Northern Cardinal",
+        "subspecies": "Common",
+        "habitat": "Woodlands",
+        "color": "Red",
+        "size": "Medium",
+        "diet": "Omnivore"
+    },
+    {
+        "species": "Snowy Owl",
+        "subspecies": "Arctic",
+        "habitat": "Tundra",
+        "color": "White",
+        "size": "Large",
+        "diet": "Carnivore"
+    },
+    {
+        "species": "Wood Duck",
+        "subspecies": "Carolina",
+        "habitat": "Wetlands",
+        "color": "Multicolored",
+        "size": "Medium",
+        "diet": "Omnivore"
+    },
+    {
+        "species": "Turkey Vulture",
+        "subspecies": "Northern",
+        "habitat": "Open areas",
+        "color": "Dark Brown",
+        "size": "Large",
+        "diet": "Scavenger"
+    },
+    {
+        "species": "House Sparrow",
+        "subspecies": "Domestic",
+        "habitat": "Urban",
+        "color": "Brown and Gray",
+        "size": "Small",
+        "diet": "Omnivore"
+    },
+    {
+        "species": "European Starling",
+        "subspecies": "Common",
+        "habitat": "Urban",
+        "color": "Iridescent Black",
+        "size": "Medium",
+        "diet": "Omnivore"
+    },
+    {
+        "species": "Mourning Dove",
+        "subspecies": "Eastern",
+        "habitat": "Open fields",
+        "color": "Light Brown",
+        "size": "Medium",
+        "diet": "Herbivore"
+    },
+    {
+        "species": "Red-tailed Hawk",
+        "subspecies": "Eastern",
+        "habitat": "Open country",
+        "color": "Brown and Red",
+        "size": "Large",
+        "diet": "Carnivore"
+    },
+    {
+        "species": "Common Raven",
+        "subspecies": "Northern",
+        "habitat": "Mountains",
+        "color": "Black",
+        "size": "Large",
+        "diet": "Omnivore"
+    },
+    {
+        "species": "American Goldfinch",
+        "subspecies": "Eastern",
+        "habitat": "Fields",
+        "color": "Yellow and Black",
+        "size": "Small",
+        "diet": "Herbivore"
+    },
+    {
+        "species": "Barn Owl",
+        "subspecies": "Western",
+        "habitat": "Grasslands",
+        "color": "White and Brown",
+        "size": "Medium",
+        "diet": "Carnivore"
+    },
+    {
+        "species": "Ruby-throated Hummingbird",
+        "subspecies": "Eastern",
+        "habitat": "Gardens",
+        "color": "Green and Red",
+        "size": "Tiny",
+        "diet": "Nectarivore"
+    },
+    {
+        "species": "Black-capped Chickadee",
+        "subspecies": "Northern",
+        "habitat": "Forests",
+        "color": "Black, White, and Gray",
+        "size": "Small",
+        "diet": "Omnivore"
+    },
+    {
+        "species": "Sandhill Crane",
+        "subspecies": "Greater",
+        "habitat": "Wetlands",
+        "color": "Gray",
+        "size": "Large",
+        "diet": "Omnivore"
+    }
+]
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <div class="panel">
+            <p class="panel-heading">/birds/:id</p>
+            <div class="panel-block">
+                <div class="container">
+                    <div class="columns is-mobile">
+                        <div class="column is-half">
+                            <div class="tags has-addons">
+                                <span class="tag is-primary">GET</span>
+                                <span class="tag"><code>/birds/:id</code></span>
+                            </div>
+                        </div>
+                        <div class="column is-half">
+                            <div class="icon is-pulled-right">
+                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                            </div>
+                            <span class="tag is-pulled-right">SHOW ROUTE</span>
+                        </div>
+                    </div>
+
+                    <div class="messages">
+                        <div class="message is-small">
+                            <div class="message-header">Example request</div>
+                            <div class="message-body">
+                                <code
+                                >GET
+                                    {BASE_URI}/api/birds/680f4fc819798cd1d1fcc2b2</code
+                                >
+                            </div>
+                        </div>
+
+                        <div class="message is-small">
+                            <div class="message-header">Example response</div>
+                            <div class="message-body">
+                                <pre>
+200 OK
+{
+    "species": "Mallard",
+    "subspecies": "Common",
+    "habitat": "Wetlands",
+    "color": "Green and Brown",
+    "size": "Medium",
+    "diet": "Omnivore"
+}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</main>
+</body>
+</html>
