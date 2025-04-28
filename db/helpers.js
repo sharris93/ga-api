@@ -3,11 +3,7 @@ import { dbURI } from '../config/environment.js'
 
 
 export function connectToDb() {
-  return mongoose.connect(dbURI, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-  })
+  return mongoose.connect(dbURI)
 }
 
 export function truncateDb(){
