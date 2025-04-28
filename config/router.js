@@ -1,6 +1,7 @@
 import express from 'express'
 import { eventIndex, eventCreate, eventShow, eventEdit, eventDelete } from '../controllers/events.js'
 import { movieIndex, movieShow } from '../controllers/movies.js'
+import { birdIndex, birdShow } from '../controllers/birds.js'
 import secureRoute from '../lib/secureRoute.js'
 import auth from '../controllers/auth.js'
 
@@ -22,6 +23,12 @@ router.route('/movies')
 
 router.route('/movies/:id')
   .get(movieShow)
+
+router.route('/birds')
+  .get(birdIndex)
+
+router.route('/birds/:id')
+  .get(birdShow)
 
 router.post('/register', auth.register)
 router.post('/login', auth.login)

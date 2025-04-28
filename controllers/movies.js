@@ -1,17 +1,18 @@
-import movieData from './data/movies.js'
+import Movie from '../models/movie.js'
 
-export function movieIndex(_req, res, next) {
+export async function movieIndex(_req, res, next) {
   try {
-    return res.status(200).json(movieData)
+    const movies = await Movie.find()
+    return res.status(200).json(movies)
   } catch (err) {
     next(err)
   }
 }
 
-export function movieShow(req, res, next) {
+export async function movieShow(req, res, next) {
   try {
     const { id } = req.params
-    const movie = movieData.find(movie => movie.id === parseInt(id))
+    const movie = await Movie.findById(id)
     if (movie) {
       return res.status(200).json(movie)
     } else {
