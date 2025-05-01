@@ -9,6 +9,22 @@ export async function movieIndex(_req, res, next) {
   }
 }
 
+export async function movieSuggestions(req, res, next) {
+  try {
+    const regex = new RegExp(req.query.q, 'i')
+
+    const movies = await Movie.find({
+      $or: [
+        { title: { $regex: regex } }
+      ]
+    })
+
+    return res.json(movies.map(movie => movie.title))
+  } catch (err) {
+    next(err)
+  }
+}
+
 export async function movieSearch(req, res, next) {
   try {
     const regex = new RegExp(req.query.q, 'i')
