@@ -21,11 +21,11 @@ router.route('/events/:eventId')
 router.route('/movies')
   .get(movieIndex)
 
-router.route('/movies/:id')
-  .get(movieShow)
-
 router.route('/movies/search')
   .get(movieSearch)
+
+router.route('/movies/:id')
+  .get(movieShow)
 
 router.route('/birds')
   .get(birdIndex)
