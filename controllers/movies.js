@@ -17,7 +17,6 @@ export async function movieSearch(req, res, next) {
       $or: [
         { title: { $regex: regex } },
         { director: { $regex: regex } },
-        { year: { $regex: regex } },
         { genres: { $regex: regex } }, // Add more as needed
       ]
     })
