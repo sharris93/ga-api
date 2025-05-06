@@ -37,7 +37,7 @@ router.route('/birds')
 router.route('/birds/:id')
   .get(birdShow)
 
-router.route('/activies')
+router.route('/activities')
   .get(activityIndex)
 
 router.route('/activities/:activityId')
