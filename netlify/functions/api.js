@@ -11,7 +11,26 @@ import serverless from 'serverless-http'
 
 const app = express()
 
-app.use(express.json())
+app.use((req, res, next) => {
+  let data = '';
+
+  req.on('data', chunk => {
+    data += chunk;
+  });
+
+  req.on('end', () => {
+    if (data) {
+      try {
+        req.body = JSON.parse(data);
+      } catch (err) {
+        return res.status(400).send({ error: 'Invalid JSON' });
+      }
+    } else {
+      req.body = {};
+    }
+    next();
+  });
+})
 app.use(cors())
 app.use(logger)
 app.use('/', htmlRouter)
