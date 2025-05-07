@@ -38,7 +38,7 @@ router.route('/birds')
   .get(birdIndex)
   .post(birdCreate)
 
-router.route('/birds/:id')
+router.route('/birds/:birdId')
   .get(birdShow)
   .put(birdUpdate)
   .delete(birdDelete)

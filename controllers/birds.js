@@ -12,13 +12,12 @@ export async function birdIndex(_req, res, next) {
 
 export async function birdShow(req, res, next) {
   try {
-    const { id } = req.params
-    const bird = await Bird.findById(id)
-    if (bird) {
-      return res.json(bird)
-    } else {
-      return res.status(404).json({ message: 'Bird not found' })
+    const { birdId } = req.params
+    const bird = await Bird.findById(birdId)
+    if (!bird) {
+      throw new NotFound()
     }
+    return res.json(bird)
   } catch (err) {
     next(err)
   }
