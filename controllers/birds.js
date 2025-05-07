@@ -1,3 +1,4 @@
+import { NotFound } from "../lib/errors.js"
 import Bird from "../models/bird.js"
 
 export async function birdIndex(_req, res, next) {
@@ -14,7 +15,7 @@ export async function birdShow(req, res, next) {
     const { id } = req.params
     const bird = await Bird.findById(id)
     if (bird) {
-      return res.status(200).json(bird)
+      return res.json(bird)
     } else {
       return res.status(404).json({ message: 'Bird not found' })
     }
