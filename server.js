@@ -7,12 +7,14 @@ import express from 'express'
 import logger from './lib/logger.js'
 import router from './config/router.js'
 import htmlRouter from './config/html-router.js'
+import enforceBody from './lib/enforceBody.js'
 
 const app = express()
 
 app.use(express.json())
 app.use(cors())
-app.use('/', logger)
+app.use(enforceBody)
+app.use(logger)
 app.use('/', htmlRouter)
 app.use('/api', router)
 app.use(errorHandler)

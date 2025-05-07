@@ -1,4 +1,4 @@
-import { NotFound, Unauthorized, AlreadyExists } from '../lib/errors.js'
+import { NotFound } from '../lib/errors.js'
 
 import { Activity } from '../models/Trips/trip.js'
 

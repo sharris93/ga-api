@@ -4,7 +4,7 @@ import { movieIndex, movieShow, movieSearch, movieSuggestions, movieCreate, movi
 import { birdIndex, birdShow, birdCreate, birdUpdate, birdDelete } from '../controllers/birds.js'
 import { activityIndex, activityShow, activityCreate, activityUpdate, activityDelete } from '../controllers/activities.js'
 import secureRoute from '../lib/secureRoute.js'
-import auth from '../controllers/auth.js'
+import { registerUser, loginUser } from '../controllers/auth.js'
 
 
 const router = express.Router()
@@ -52,8 +52,8 @@ router.route('/activities/:activityId')
   .put(activityUpdate)
   .delete(activityDelete)
 
-router.post('/register', auth.register)
-router.post('/login', auth.login)
+router.post('/register', registerUser)
+router.post('/login', loginUser)
 
 
 export default router
