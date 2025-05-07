@@ -56,3 +56,40 @@ export async function movieShow(req, res, next) {
     next(err)
   }
 }
+
+export async function movieCreate(req, res, next) {
+  try {
+    const newMovie = await Movie.create(req.body)
+    return res.json(newMovie)
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function movieUpdate(req, res, next) {
+  const { movieId } = req.params
+  try {
+    const foundMovie = await Movie.findById(movieId)
+    if (!foundMovie) {
+      throw new NotFound()
+    }
+    const updatedMovie = await Movie.findByIdAndUpdate(movieId, req.body, { new: true })
+    return res.status(200).json(updatedMovie)
+  } catch (err) {
+    next(err)
+  }
+}
+
+export async function movieDelete(req, res, next) {
+  const { movieId } = req.params
+  try {
+    const foundMovie = await Movie.findById(movieId)
+    if (!foundMovie) {
+      throw new NotFound()
+    }
+    await Movie.findByIdAndDelete(movieId)
+    return res.sendStatus(204)
+  } catch (err) {
+    next(err)
+  }
+}

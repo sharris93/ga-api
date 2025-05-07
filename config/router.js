@@ -1,7 +1,7 @@
 import express from 'express'
 import { eventIndex, eventCreate, eventShow, eventEdit, eventDelete } from '../controllers/events.js'
-import { movieIndex, movieShow, movieSearch, movieSuggestions } from '../controllers/movies.js'
-import { birdIndex, birdShow } from '../controllers/birds.js'
+import { movieIndex, movieShow, movieSearch, movieSuggestions, movieCreate, movieUpdate, movieDelete } from '../controllers/movies.js'
+import { birdIndex, birdShow, birdCreate, birdUpdate, birdDelete } from '../controllers/birds.js'
 import { activityIndex, activityShow, activityCreate, activityUpdate, activityDelete } from '../controllers/activities.js'
 import secureRoute from '../lib/secureRoute.js'
 import auth from '../controllers/auth.js'
@@ -21,6 +21,7 @@ router.route('/events/:eventId')
 
 router.route('/movies')
   .get(movieIndex)
+  .post(movieCreate)
 
 router.route('/movies/suggestions')
   .get(movieSuggestions)
@@ -30,12 +31,17 @@ router.route('/movies/search')
 
 router.route('/movies/:id')
   .get(movieShow)
+  .put(movieUpdate)
+  .delete(movieDelete)
 
 router.route('/birds')
   .get(birdIndex)
+  .post(birdCreate)
 
 router.route('/birds/:id')
   .get(birdShow)
+  .put(birdUpdate)
+  .delete(birdDelete)
 
 router.route('/activities')
   .get(activityIndex)
