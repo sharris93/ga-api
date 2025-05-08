@@ -7,6 +7,7 @@ const birdSchema = new mongoose.Schema({
   color: { type: String },
   size: { type: String },
   diet: { type: String },
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
 }, {
   timestamps: true,
 });

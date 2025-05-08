@@ -1,3 +1,4 @@
+import checkOwner from '../lib/checkOwner.js'
 import { NotFound } from '../lib/errors.js'
 
 import { Activity } from '../models/Trips/trip.js'
@@ -40,6 +41,7 @@ export async function activityUpdate(req, res, next) {
     if (!foundActivity) {
       throw new NotFound()
     }
+    checkOwner(req.user, foundActivity)
     const updatedActivity = await Activity.findByIdAndUpdate(activityId, req.body, { new: true })
     return res.status(200).json(updatedActivity)
   } catch (err) {
@@ -54,6 +56,7 @@ export async function activityDelete(req, res, next) {
     if (!foundActivity) {
       throw new NotFound()
     }
+    checkOwner(req.user, foundActivity)
     await Activity.findByIdAndDelete(activityId)
     return res.sendStatus(204)
   } catch (err) {

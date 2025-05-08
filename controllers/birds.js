@@ -1,3 +1,4 @@
+import checkOwner from "../lib/checkOwner.js"
 import { NotFound } from "../lib/errors.js"
 import Bird from "../models/bird.js"
 
@@ -39,6 +40,7 @@ export async function birdUpdate(req, res, next) {
     if (!foundBird) {
       throw new NotFound()
     }
+    checkOwner(req.user, foundBird)
     const updatedBird = await Bird.findByIdAndUpdate(birdId, req.body, { new: true })
     return res.status(200).json(updatedBird)
   } catch (err) {
@@ -53,6 +55,7 @@ export async function birdDelete(req, res, next) {
     if (!foundBird) {
       throw new NotFound()
     }
+    checkOwner(req.user, foundBird)
     await Bird.findByIdAndDelete(birdId)
     return res.sendStatus(204)
   } catch (err) {

@@ -21,7 +21,7 @@ router.route('/events/:eventId')
 
 router.route('/movies')
   .get(movieIndex)
-  .post(movieCreate)
+  .post(secureRoute, movieCreate)
 
 router.route('/movies/suggestions')
   .get(movieSuggestions)
@@ -31,26 +31,26 @@ router.route('/movies/search')
 
 router.route('/movies/:movieId')
   .get(movieShow)
-  .put(movieUpdate)
-  .delete(movieDelete)
+  .put(secureRoute, movieUpdate)
+  .delete(secureRoute, movieDelete)
 
 router.route('/birds')
   .get(birdIndex)
-  .post(birdCreate)
+  .post(secureRoute, birdCreate)
 
 router.route('/birds/:birdId')
   .get(birdShow)
-  .put(birdUpdate)
-  .delete(birdDelete)
+  .put(secureRoute, birdUpdate)
+  .delete(secureRoute, birdDelete)
 
 router.route('/activities')
   .get(activityIndex)
-  .post(activityCreate)
+  .post(secureRoute, activityCreate)
 
 router.route('/activities/:activityId')
   .get(activityShow)
-  .put(activityUpdate)
-  .delete(activityDelete)
+  .put(secureRoute, activityUpdate)
+  .delete(secureRoute, activityDelete)
 
 router.post('/register', registerUser)
 router.post('/login', loginUser)

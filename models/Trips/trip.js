@@ -8,7 +8,7 @@ const activitySchema = new mongoose.Schema({
   tags: [String],
   duration: { type: Number, min: 0 },
   images: [String],
-  owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 }, { timestamps: true })
 
 const typeSchema = new mongoose.Schema({

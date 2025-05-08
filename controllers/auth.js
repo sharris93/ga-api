@@ -30,7 +30,7 @@ export async function loginUser(req, res, next) {
       throw new Unauthorized()
     }
 
-    const token = jwt.sign({ sub: userToLogin._id }, secret, { expiresIn: '7 days' })
+    const token = jwt.sign({ user: { _id: userToLogin._id, username: userToLogin.username } }, secret, { expiresIn: '7 days' })
 
     return res.status(202).json({
       message: `Welcome Back ${userToLogin.username}`,

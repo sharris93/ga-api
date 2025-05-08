@@ -6,6 +6,7 @@ const movieSchema = new mongoose.Schema({
   year: { type: Number, required: true },
   genres: { type: [String], required: true }, // Array of strings
   rating: { type: Number, required: true },
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 }, {
   timestamps: true,
 });

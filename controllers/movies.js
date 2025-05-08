@@ -1,3 +1,4 @@
+import checkOwner from '../lib/checkOwner.js'
 import { NotFound } from '../lib/errors.js'
 import Movie from '../models/movie.js'
 
@@ -74,6 +75,7 @@ export async function movieUpdate(req, res, next) {
     if (!foundMovie) {
       throw new NotFound()
     }
+    checkOwner(req.user, foundMovie)
     const updatedMovie = await Movie.findByIdAndUpdate(movieId, req.body, { new: true })
     return res.status(200).json(updatedMovie)
   } catch (err) {
@@ -88,6 +90,7 @@ export async function movieDelete(req, res, next) {
     if (!foundMovie) {
       throw new NotFound()
     }
+    checkOwner(req.user, foundMovie)
     await Movie.findByIdAndDelete(movieId)
     return res.sendStatus(204)
   } catch (err) {
