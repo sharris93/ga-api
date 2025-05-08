@@ -29,7 +29,7 @@ router.route('/movies/suggestions')
 router.route('/movies/search')
   .get(movieSearch)
 
-router.route('/movies/:id')
+router.route('/movies/:movieId')
   .get(movieShow)
   .put(movieUpdate)
   .delete(movieDelete)

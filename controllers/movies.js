@@ -1,3 +1,4 @@
+import { NotFound } from '../lib/errors.js'
 import Movie from '../models/movie.js'
 
 export async function movieIndex(_req, res, next) {
@@ -45,8 +46,8 @@ export async function movieSearch(req, res, next) {
 
 export async function movieShow(req, res, next) {
   try {
-    const { id } = req.params
-    const movie = await Movie.findById(id)
+    const { movieId } = req.params
+    const movie = await Movie.findById(movieId)
     if (movie) {
       return res.status(200).json(movie)
     } else {
