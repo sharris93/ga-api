@@ -34,6 +34,15 @@ async function seed() {
     eventData.forEach(event => {
       event.owner = user
     })
+    movieData.forEach(movie => {
+      movie.owner = user
+    })
+    birdData.forEach(bird => {
+      bird.owner = user
+    })
+    activityData.forEach(activity => {
+      activity.owner = user
+    })
 
     const events = await Event.create(eventData)
     console.log(`${events.length} events added to Database`)
